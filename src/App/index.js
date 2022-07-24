@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AppUI } from './AppUI';
 import useLocalStorage from '../hooks/useLocalStorage';
 
@@ -11,7 +11,12 @@ import useLocalStorage from '../hooks/useLocalStorage';
 // ];
 
 function App() {
-  const [ todos, saveTodos ] = useLocalStorage('TODOS_V1', [])
+  const { 
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error
+  } = useLocalStorage('TODOS_V1', [])
 
 
   const [searchValue, setSearchValue] = React.useState('');
@@ -44,9 +49,19 @@ function App() {
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   };
+  // console.log('render (antes del useEffect)')
+
+  // useEffect(() => {
+  //   console.log('use Effect')
+  // }, [totalTodos])
+
+  // console.log('render (despues del useEffect)')
+
   
   return (
     <AppUI
+      loading={loading}
+      error={error}
       totalTodos={totalTodos}
       completedTodos={completedTodos}
       searchValue={searchValue}
