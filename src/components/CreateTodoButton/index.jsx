@@ -1,9 +1,9 @@
 import React from "react";
 import "./CreateTodoButton.css";
 
-export function CreateTodoButton() {
+export function CreateTodoButton({ openModal, setOpenModal }) {
   const onClickFunction = () => {
-    alert("Aqui se deberia abrir el modal");
+    setOpenModal((prevState) => !prevState);
   };
   return (
     <button className="CreateTodoButton" onClick={onClickFunction}>
