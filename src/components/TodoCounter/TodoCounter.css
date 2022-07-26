@@ -3,3 +3,6 @@
     text-align: center;
     padding: 4.8rem;
 }
+.TodoCounter--loading {
+    opacity: 25%;
+}
