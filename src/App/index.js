@@ -24,20 +24,28 @@ import { EmptyTodos } from '../components/EmptyTodos';
 
 function App() {
   const { 
+    state,
+    stateUpdaters
+  } = useTodos()
+
+  const { 
     error,
     loading,
     searchedTodos,
-    completeTodo,
-    deleteTodo,
-    openModal, 
-    setOpenModal,
-    totalTodos, 
+    totalTodos,
     completedTodos,
     searchValue,
+    openModal, 
+  } = state
+
+  const {
     setSearchValue,
+    completeTodo,
+    deleteTodo,
     addTodo,
+    setOpenModal,
     syncronizeTodos,
-  } = useTodos()
+  } = stateUpdaters
 
   
   return (
